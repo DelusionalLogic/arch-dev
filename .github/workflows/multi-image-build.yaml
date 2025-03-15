@@ -1,0 +1,26 @@
+name: Build
+
+on:
+  push:
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  process-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Set up Docker
+      uses: docker/setup-buildx-action@v3
+
+    - name: Build
+      env:
+        REGISTRY: ghcr.io
+        USERNAME: github_action
+        PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        BUILD_VERSION: ${{ github.run_number }}
+      run: ./build.sh ${{ github.ref == 'refs/heads/master' && '--release' }}

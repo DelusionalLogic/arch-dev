@@ -1,4 +1,4 @@
-FROM archlinux@sha256:2eb1a56a6036b1f70e63ca714814fe304a8f20d29ab425b4f056f34508500000
+FROM archlinux@sha256:6de1a7bfb793f8d9e24a7d573234f60d011d16db546de5bd777b75707fd4aff4
 
 ENV TZ Europe/Copenhagen
 
